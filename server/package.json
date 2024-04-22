@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.20.2",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.19.2",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.30.1",
+    "mongoose": "^8.3.2",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "name": "musify-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MartinAcosta-dev",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

@@ -147,7 +147,7 @@ async function uploadImage(req, res){
         if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
             const userUpdated = await User.findByIdAndUpdate(userId, {image: file_name});
             if(userUpdated){
-                res.status(200).send({message: 'Se ha actualizado la imagen del usuario'});
+                res.status(200).send({image: file_name, user: userUpdated});
             }else{
                 res.status(500).send({message: 'Error al actualizar el usuario'});
             }

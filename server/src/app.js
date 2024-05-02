@@ -4,8 +4,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router = require('./routes/app.routes');
 var morgan = require('morgan');
+var cors = require('cors');
 
 var app = express();
+
+app.use(cors());
 
 app.use(morgan('dev'));
 // Rutas ------------------------------------------

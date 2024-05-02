@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var User = require('../models/user.model');
 var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+var jwt = require('../services/jwt');
 
 async function saveUser(req, res){
     try{
@@ -121,13 +121,13 @@ async function loginUser(req, res){
             return res.status(401).send({error: 'Contraseña incorrecta'});
         }
 
-        
-        // Generar un token JWT para el usuario autentificado
-        const token = jwt.sign({userId: user._id}, 'secreto', {expiresIn: '1h'});
-
-        // Enviar el token como respuesta
-
-        res.send({token});
+        if(req.body.gethash){
+            res.status(200).send({
+                token: jwt.createToken(user)
+            });
+        }else{
+            res.send({user});
+        }
         
     }catch(err){
         res.status(500).json({

@@ -59,32 +59,37 @@ async function getUserById(req, res){
 async function updateUser(req, res){
     const { id } = req.params;
 
-    var params = req.body;
-    var saltRounds = 10;
+    // En el caso de que el ID que viene en la request (Del usuario que quiere editar sus datos)
+    // sea distinto al ID que viene de la decodificacion del token en el middleware
+    // entonces lo rechazamos
+    if(id != req.user.sub){
+        res.status(500).send({message: 'No tienes permiso para actualizar este usuario'});
+    }else{
 
-    if(params.password){
-        var hashedPassword = await bcrypt.hash(params.password, saltRounds);
-    }
-    
+        var params = req.body;
+        var saltRounds = 10;
+        
+        if(params.password){
+            var hashedPassword = await bcrypt.hash(params.password, saltRounds);
+        }
 
-    const user = {
-        name: req.body.name,
-        surname: req.body.surname,
-        email: req.body.email,
-        password: hashedPassword,
-        role: req.body.role,
-        image: req.body.image
-    };
-    
-    try{
-        await User.findByIdAndUpdate(id, {$set: user}, {new: true});
-        res.json({
-            status: 'Updated success.'
-        });
-    }catch(err){
-        res.status(500).json({
-            status: err
-        });
+        const user = {
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email,
+            password: hashedPassword,
+            role: req.body.role,
+            image: req.body.image
+        };
+
+        try{
+            let userUpdated = await User.findByIdAndUpdate(id, {$set: user}, {new: true});
+            res.status(200).send(userUpdated);
+        }catch(err){
+            res.status(500).json({
+                status: err
+            });
+        }
     }
 }
 

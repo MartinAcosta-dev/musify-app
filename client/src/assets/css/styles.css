@@ -1,3 +1,4 @@
-body{
-    
+div#mainApp{ 
+    background-color: rgb(235, 235, 235);
+    min-height: 100vh;
 }

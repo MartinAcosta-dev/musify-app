@@ -13,3 +13,30 @@ input{
 .btn{
     margin-top: 10px;
 }
+
+.navigation a{
+    color: #d3d1d1;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 4px rgb(211, 211, 211);
+}
+
+#navigationList{
+    gap: 15px;
+}
+
+#user_logged{
+    /* padding: 5px;
+    margin-top: 25px;
+    position: absolute;
+    width: 200px;
+    bottom: 0px;
+    text-align: center; */
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}

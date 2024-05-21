@@ -142,6 +142,7 @@ async function loginUser(req, res){
 }
 
 async function uploadImage(req, res){
+    // 
     var userId = req.params.id;
     var file_name = 'Imagen no subida...';
     if(req.files){

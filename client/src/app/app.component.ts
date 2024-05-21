@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user.model';
 import { UserService } from './services/user.service';
 
+import { GLOBAL } from 'src/app/services/global';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,8 +13,9 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
   public title = 'MUSIFY';
-  public user: User;
-  public userRegister: User;
+  public user: User = new User('','','','','','ROLE_USER','');
+  public userRegister: User = new User('','','','','','ROLE_USER','');;
+  public apiUrl: string = GLOBAL.url;;
 
   public identity: any = {};
   public token: string = "";
@@ -22,8 +26,7 @@ export class AppComponent implements OnInit {
   constructor(
     private _userService: UserService
   ){
-    this.user = new User('','','','','','ROLE_USER','');
-    this.userRegister = new User('','','','','','ROLE_USER','');
+    
   }
 
   ngOnInit(){
@@ -55,21 +58,11 @@ export class AppComponent implements OnInit {
 
               this.user = new User('','','','','','ROLE_USER','');
             }
-          },
-          (error) => {
-            this.errorMessage = <any>error;
-            this.errorMessage = this.errorMessage.error.error;      
           }
-          
           );
 
         }
-      },
-      (error) => {
-        this.errorMessage = <any>error;
-        this.errorMessage = this.errorMessage.error.error;      
       }
-      
     );
   }
 

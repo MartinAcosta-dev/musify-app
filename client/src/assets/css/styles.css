@@ -1,4 +1,39 @@
-div#mainApp{ 
-    background-color: rgb(235, 235, 235);
+html{ 
+    background-color: rgb(47, 124, 124);
     min-height: 100vh;
+}
+
+#appRoot{
+    height: 100vh;
+}
+
+#mainRow{
+    background-color: rgb(207, 207, 207);
+    height: 100vh;
+}
+
+.navigation{
+    text-align: center;
+    color: white;
+    background-color: #1C1C1F;
+    height: 100%;
+    font-weight: bold;
+}
+
+.head-title{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.head-title a:hover{
+    background-color: #1C1C1F !important;
+    color: white !important;
+}
+
+.head-title a{
+    text-decoration: none;
 }

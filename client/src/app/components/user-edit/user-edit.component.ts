@@ -18,11 +18,13 @@ export class UserEditComponent implements OnInit{
   private identity: User;
   private token: string;
   public alertMessage: string = "";
-  private apiUrl = GLOBAL.url;
+  public apiUrl = GLOBAL.url;
 
   constructor(
     private _userService: UserService
   ){
+    console.log("Ejecutandose el constructor de user-edit component.ts");
+
     // LocalStorage
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -34,7 +36,7 @@ export class UserEditComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("user-edit.component.ts cargado");
+    console.log("Ejecutandose ngOnInit de user-edit component.ts");
   }
 
   public onSubmit() {
@@ -43,6 +45,7 @@ export class UserEditComponent implements OnInit{
         if (!updateUserResponse) {
           this.alertMessage = "El usuario no se ha actualizado.";
         } else {
+          // Seteo localStorage con el nuevo usuario
           localStorage.setItem('identity', JSON.stringify(this.user));
   
           // Solución rápida para cambiar el valor del nombre en la vista luego de actualizarlo

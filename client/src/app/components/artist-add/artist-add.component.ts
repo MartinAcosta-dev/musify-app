@@ -4,12 +4,13 @@ import { User } from 'src/app/models/user.model';
 
 import { GLOBAL } from 'src/app/services/global';
 import { UserService } from 'src/app/services/user.service';
+import { ArtistService } from 'src/app/services/artist.service';
 
 @Component({
   selector: 'app-artist-add',
   templateUrl: './artist-add.component.html',
   styleUrls: ['./artist-add.component.css'],
-  providers: [UserService]
+  providers: [UserService, ArtistService]
 })
 export class ArtistAddComponent implements OnInit{
   public titulo: string;
@@ -19,7 +20,8 @@ export class ArtistAddComponent implements OnInit{
   public url: string; 
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _artistService: ArtistService
   ){
     this.titulo = "Crear nuevo artista";
     this.identity = this._userService.getIdentity();
@@ -29,7 +31,7 @@ export class ArtistAddComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("Artist-add-component funcionando")
+    alert(this._artistService.addArtist());
   }
 
   public onSubmit(){

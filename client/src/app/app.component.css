@@ -14,6 +14,14 @@ input{
     margin-top: 10px;
 }
 
+.navigation{
+    padding: 0;
+}
+
+.actived{
+    background-color: rgb(73, 73, 73);
+}
+
 .navigation a{
     color: #d3d1d1;
     text-decoration: none;
@@ -21,7 +29,6 @@ input{
 
 .navigation a:hover{
     color: rgb(255, 255, 255);
-    text-shadow: 1px 1px 4px rgb(211, 211, 211);
 }
 
 #navigationList{
@@ -39,4 +46,21 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: end;
+}
+
+#userImage{
+    width: 80px;
+    border-radius: 90px;
+}
+
+#logoutSettingsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#logoutSettingsWrapper svg{
+    cursor: pointer;
+    height: 35px;
 }

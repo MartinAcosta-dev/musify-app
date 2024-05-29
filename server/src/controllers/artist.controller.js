@@ -46,7 +46,7 @@ async function saveArtist(req, res){
 
         await artist.save();
         res.status(200).send({
-            message: 'Se guardó el artista con éxito'
+            artist: artist
         })
     }catch(err){
         res.status(500).send({

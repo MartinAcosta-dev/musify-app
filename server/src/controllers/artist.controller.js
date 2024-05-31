@@ -69,7 +69,7 @@ async function updateArtist(req, res){
     try{
         await Artist.findByIdAndUpdate(id, {$set: artist}, {new: true});
         res.json({
-            status: 'Updated success.'
+            artist: artist 
         });
     }catch(err){
         res.status(500).json({

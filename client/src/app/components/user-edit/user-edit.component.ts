@@ -36,7 +36,7 @@ export class UserEditComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("Ejecutandose ngOnInit de user-edit component.ts");
+
   }
 
   public onSubmit() {
@@ -59,8 +59,6 @@ export class UserEditComponent implements OnInit{
               .then(makeFileResponse => {
                 this.user = makeFileResponse.user;
                 localStorage.setItem('identity', JSON.stringify(this.user));
-                console.log("Usuario justo luego de setear identity a this.user");
-                console.log(this.user);
   
                 this.alertMessage = "El usuario se ha actualizado correctamente.";
               })
@@ -96,7 +94,7 @@ export class UserEditComponent implements OnInit{
   }
 
   public async makeFileRequest(url: string, params: Array<string>, files: Array<File>){
-    let token = this._userService.getToken();
+    let token = this.token;
     var formData : any = new FormData();
     for(var i = 0; i < files.length; i++){
       formData.append('image', files[i], files[i].name);

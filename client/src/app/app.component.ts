@@ -58,9 +58,7 @@ export class AppComponent implements OnInit {
 
               this.user = new User('','','','','','ROLE_USER','');
             }
-          }
-          );
-
+          });
         }
       }
     );

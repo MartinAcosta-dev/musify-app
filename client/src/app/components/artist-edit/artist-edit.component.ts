@@ -34,7 +34,7 @@ export class ArtistEditComponent implements OnInit {
     this.titulo = "Editar artista";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.artist = new Artist("","","");
+    this.artist = new Artist("","","","");
     this.url = GLOBAL.url;
     this.alertMessage = "";
     this.artistId = this.router.url;

@@ -30,7 +30,7 @@ export class ArtistAddComponent implements OnInit{
     this.titulo = "Crear nuevo artista";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.artist = new Artist("","","");
+    this.artist = new Artist("","","","");
     this.url = GLOBAL.url;
     this.alertMessage = "";
   }

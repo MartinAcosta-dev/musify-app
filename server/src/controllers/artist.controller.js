@@ -11,7 +11,7 @@ var jwt = require('jsonwebtoken');
 async function getArtists(req, res){
     try{
         var page = req.params.page || 1;
-        var itemsPerPage = 3;
+        var itemsPerPage = 4;
         var artists = await Artist.find().sort('name').paginate(page, itemsPerPage);
         
         res.status(200).send({artists});

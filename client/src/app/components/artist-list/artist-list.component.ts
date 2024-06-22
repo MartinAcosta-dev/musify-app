@@ -23,7 +23,7 @@ export class ArtistListComponent implements OnInit{
   public url: string; 
   public next_page: number;
   public prev_page: number;
-  public hola = [2, 3, 4];
+  public confirmado: string;
 
   constructor(
     private _userService: UserService,
@@ -38,12 +38,12 @@ export class ArtistListComponent implements OnInit{
     this.url = GLOBAL.url;
     this.next_page = 1;
     this.prev_page = 1;
+    this.confirmado = "";
   }
 
   ngOnInit(): void {
     // Conseguir listado de artistas y asignarlo al listado artists
     this.getArtists();
-    console.log(this.artists)
   }
 
   public async getArtists(){
@@ -65,11 +65,29 @@ export class ArtistListComponent implements OnInit{
               alert("Error")
             }else{
               this.artists = response.artists;
-              console.log(this.identity);
             }
           }
         )
       }
     });
   }
+
+  public onDeleteConfirm(id: string){
+    this.confirmado = id;
+  }
+
+  public onCancelArtist(){
+    this.confirmado = "";
+  }
+
+  public onDeleteArtist(id: string){
+    this._artistService.deleteArtist(this.token, id).subscribe(
+      (response) => {
+        if(response.message){
+          this.getArtists();
+        }
+      }
+    );
+  }
+
 }

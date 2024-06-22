@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 50px;
+    gap: 30px;
     margin-left: 20px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .artist-item{
-    width: 23%;
+    width: 20.5%;
     margin: 0;
     padding: 0;
     height: 350px;
@@ -52,4 +52,18 @@
 .artist-item .artist-name a{
     color: white;
     margin-right: 5px;
+}
+
+.seguro{
+    position: absolute;
+    margin-top: -44px;
+    background-color: #222;
+    height: 40px;
+    width: 200px;
+    padding: 5px;
+    margin-left: 3px
+}
+
+.seguro a{
+    margin-right: 6px;
 }

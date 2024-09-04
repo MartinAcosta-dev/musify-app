@@ -1,0 +1,32 @@
+<div *ngIf="identity && identity.role == 'ROLE_ADMIN'" class="col-6 m-4">
+    <h1>{{titulo}}</h1>
+    <span>Crea una cancion nueva para <a [routerLink]="['/album', album._id]">{{album.title}}</a></span>
+    <hr>
+
+    <form #formSong="ngForm" (ngSubmit)="onSubmitAddSong()" action="">
+        <p>
+            <label for="">Número:</label>
+            <input type="text" #number="ngModel" name="name" [(ngModel)]="song.number" required class="form-control">
+            <span *ngIf="!number.valid && number.touched" >
+                El número de la canción es obligatorio
+            </span>
+        </p>
+
+        <p>
+            <label for="">Titulo:</label>
+            <input type="text" #name="ngModel" name="name" [(ngModel)]="song.name" required class="form-control">
+            <span *ngIf="!name.valid && name.touched" >
+                El título es obligatorio
+            </span>
+        </p>
+
+        <p>
+            <label for="">Duración:</label>
+            <input type="text" #duration="ngModel" name="duration" [(ngModel)]="song.duration" required class="form-control">
+            <span *ngIf="!duration.valid && duration.touched" >
+                La duración es obligatoria
+            </span>
+        </p>
+        <input type="submit" value="Añadir canción" class="btn btn-success">
+    </form>
+</div>

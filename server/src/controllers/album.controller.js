@@ -29,7 +29,7 @@ async function getAlbums(req, res){
 
         if(!artistId){
             // Dar todos los albums de la base de datos
-            var find = await Album.find({}).populate({path: 'artist'}).sort('title');
+            var find = await Album.find({}).populate({path: 'artist'}).sort('year');
         }else{
             // Dar los albums de un artista en concreto de la BBDD
             var find = await Album.find({artist: artistId}).populate({path: 'artist'}).sort('year');
@@ -57,12 +57,15 @@ async function saveAlbum(req, res){
             artist: params.artist
         });
 
-        await album.save();
+        let albumSaved = await album.save();
         res.status(200).send({
-            message: 'Se guardó el album con éxito'
+            success: true,
+            message: 'Se guardó el album con éxito',
+            data: albumSaved
         })
     }catch(err){
         res.status(500).send({
+            success: false,
             message: err
         })
     }
@@ -76,14 +79,15 @@ async function updateAlbum(req, res){
         const albumToUpdate = await Album.findByIdAndUpdate(albumId, update);
 
         if(albumToUpdate){
-            res.status(200).send({message: "Se actualizo el album"});
+            let albumUpdated = await Album.findById(albumId);
+            res.status(200).send({success: true, message: "Se actualizo el album", albumUpdated: albumUpdated});
         }else{
-            res.status(500).send({message: "Error al actualizar el album"});
+            res.status(500).send({success: false, message: "Error al actualizar el album"});
         }
 
     } catch (error) {
         res.status(500).send({
-            message: err
+            message: error
         })
     }
 }
@@ -101,7 +105,7 @@ async function deleteAlbum(req, res){
             if(!songDeleted){
                 res.status(500).send({message: 'No se ha podido eliminar cancion '+ songDeleted});
             }else{
-                res.status(200).send({album: albumDeleted});
+                res.status(200).send({success: true, message: "Se ha eliminado el album y las canciones que contenia", album: albumDeleted});
             }
         }
     } catch (error) {
@@ -119,14 +123,14 @@ async function uploadImage(req, res){
         var file_ext = file_name.split('.')[1];
 
         if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
-            const albumUpdated = await Album.findByIdAndUpdate(albumId, {image: file_name});
+            let albumUpdated = await Album.findByIdAndUpdate(albumId, {image: file_name}, {new: true});
             if(albumUpdated){
-                res.status(200).send({album: albumUpdated});
+                res.status(200).send({message: "hola desde uploadImage" ,album: albumUpdated});
             }else{
                 res.status(500).send({message: 'Error al actualizar el album'});
             }
         }else{
-            res.status(200).send({message: 'Extension no valida.'})
+            res.status(400).send({message: 'Extension no valida. Extensiones aceptadas: png, jpg, gif.'})
         }
 
     }else{

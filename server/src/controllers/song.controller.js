@@ -61,7 +61,7 @@ async function updateSong(req, res){
     const songId = req.params.id;
     var update = req.body;
 
-    const songToUpdate = await Song.findByIdAndUpdate(songId, update);
+    const songToUpdate = await Song.findByIdAndUpdate(songId, update, {new: true});
 
     if(songToUpdate){
         res.status(200).send(songToUpdate);
@@ -88,12 +88,13 @@ async function uploadFile(req, res){
     var file_name = 'Cancion no subida...';
 
     if(req.files){
-        var file_path = req.files.file.path;
+        var file_path = req.files.song.path;
         var file_name = file_path.split('\\')[3];
         var file_ext = file_name.split('.')[1];
 
         if(file_ext == 'mp3' || file_ext == 'wav' || file_ext == 'ogg'){
-            const songUpdated = await Song.findByIdAndUpdate(songId, {file: file_name});
+            const songUpdated = await Song.findByIdAndUpdate(songId, {file: file_name}, {new: true});
+            console.log(songUpdated);
             if(songUpdated){
                 res.status(200).send({song: songUpdated});
             }else{

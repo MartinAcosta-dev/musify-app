@@ -151,7 +151,7 @@ async function uploadImage(req, res){
         var file_ext = file_name.split('.')[1];
 
         if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
-            const userUpdated = await User.findByIdAndUpdate(userId, {image: file_name});
+            const userUpdated = await User.findByIdAndUpdate(userId, {image: file_name}, {new: true});
             if(userUpdated){
                 res.status(200).send({image: file_name, user: userUpdated});
             }else{

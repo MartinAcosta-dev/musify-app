@@ -13,7 +13,7 @@ var userRouter = express.Router();
 userRouter.post('/register', UserController.saveUser);
 // POST Imagenes
 userRouter.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload ], UserController.uploadImage)
-
+userRouter.post('/login', UserController.loginUser)
 
 // GET
 userRouter.get('/users/', UserController.getUsers);
@@ -27,8 +27,6 @@ userRouter.put('/users/:id', md_auth.ensureAuth, UserController.updateUser);
 
 // DELETE
 userRouter.delete('/users/:id', UserController.deleteUser);
-
-userRouter.post('/login', UserController.loginUser)
 
 
 module.exports = userRouter;

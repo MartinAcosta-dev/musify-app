@@ -109,22 +109,25 @@ async function deleteArtist(req, res){
 async function uploadImage(req, res){
     var artistId = req.params.id;
     var file_name = 'Imagen no subida...';
-    if(req.files){
-        var file_path = req.files.image.path;
-        var file_name = file_path.split('\\')[3];
-        var file_ext = file_name.split('.')[1];
 
-        if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
-            const artistUpdated = await Artist.findByIdAndUpdate(artistId, {image: file_name});
-            if(artistUpdated){
-                res.status(200).send({message: 'Se ha actualizado la imagen del usuario'});
+    if(JSON.stringify(req.files) != "{}"){
+        if (req.files.image.path != undefined){
+            var file_path = req.files.image.path;
+            var file_name = file_path.split('\\')[3];
+            var file_ext = file_name.split('.')[1];
+    
+            if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
+                const artistUpdated = await Artist.findByIdAndUpdate(artistId, {image: file_name});
+                if(artistUpdated){
+                    res.status(200).send({message: 'Se ha actualizado la imagen del usuario'});
+                }else{
+                    res.status(500).send({message: 'Error al actualizar el usuario'});
+                }
             }else{
-                res.status(500).send({message: 'Error al actualizar el usuario'});
+                res.status(200).send({message: 'Extension no valida.'})
             }
-        }else{
-            res.status(200).send({message: 'Extension no valida.'})
         }
-
+       
     }else{
         res.status(404).send({message: 'No se ha subido ninguna imagen'});
     }

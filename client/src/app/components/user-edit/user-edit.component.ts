@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit{
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
 
-    this.titulo = "Actualizar mis datos";
+    this.titulo = "Datos de mi cuenta";
     this.user = this.identity;
     this.user.password = "";
 

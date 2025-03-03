@@ -1,0 +1,140 @@
+#componentContainer{
+    max-height: 70vh;
+    min-height: 70vh;
+    overflow-y: scroll;
+}
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+#albumsContainer{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.album-item{
+    margin-bottom: 60px !important;
+    height: 250px;
+    width: 22.3%;
+    cursor: pointer;
+
+}
+
+.album-item .album-image{
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 30px;
+}
+
+.album-item .album-image img{
+    height: 100%;
+    border-radius: 5px;
+}
+
+.album-item .album-title{
+    color: white;
+    text-shadow: 1px 1px 2px rgb(27, 27, 27);
+    padding: 8px;
+    padding-left: 15px;
+    border-radius: 10px;
+}
+
+.album-item .album-title a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.album-item .album-title a:hover{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.album-item .buttons{
+    padding: 10px;
+    padding-left: 7px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+}
+
+.album-item .buttons a{
+    margin-right: 5px;
+    border: 1px solid black;
+
+}
+
+.seguro{
+    position: absolute;
+    margin-top: -44px;
+    background-color: rgb(223, 222, 222);
+    height: 40px;
+    width: 200px;
+    padding: 5px;
+    margin-left: 3px
+}
+
+.seguro a{
+    border: 1px solid black;
+    margin-right: 6px;
+}
+
+.artist-image img{
+    cursor: pointer;
+}
+
+.pagination-buttons-div *{
+    display: inline;
+    margin-right: 5px;
+}
+
+.pagination-icon {
+    width: 20px; /* Ajusta el tamaño de las flechas */
+    height: auto;
+    cursor: pointer;
+}
+
+.album-item {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    width: 220px; /* Ajusta el tamaño según tus necesidades */
+  }
+  
+  .album-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; /* Opcional: bordes redondeados */
+  }
+  
+  
+  .album-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+    color: white;
+    padding: 5px;
+    text-align: left;
+}
+  
+  .album-title-overlay a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 15px;
+    display: flex;
+  }
+  
+  .album-title-overlay a:hover {
+    text-decoration: underline;
+  }

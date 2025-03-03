@@ -1,10 +1,12 @@
+import { Artist } from "./artist.model";
+
 export class Album {
     constructor(
-        public _id: string,
-        public title: string,
-        public description: string,
-        public year: number,
-        public image: string,
-        public artist: string
+        public _id: any,
+        public title: any,
+        public description: any,
+        public year: any,
+        public image: any,
+        public artist: any
     ){}
 }

@@ -1,6 +1,6 @@
-<div id="container"  class="col-lg-6">
+<div id="container">
     <h1>{{titulo}}</h1>
-    <div class="alert alert-warning col-lg-6" *ngIf="alertMessage">
+    <div class="alert alert-success col-lg-6" *ngIf="alertMessage">
       {{alertMessage}}
     </div>
     <form #userUpdateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-8">
@@ -26,14 +26,15 @@
         </span>
       </div>
       <div class="image_for_edit" *ngIf="user.image && user.image != 'null'">
+        <label>Imagen:</label> <br>
         <img id="userImage" src="{{apiUrl + 'get-image-user/' + user.image}}">
       </div>
       <div>
-        <label>Imagen:</label>
+        <br>
         <input type="file" (change)="fileChangeEvent($event)">
       </div>
       <br>
-      <input type="submit" value="Actualizar mis datos" class="btn btn-primary">
+      <input type="submit" id="edit-user-submit-btn" value="Actualizar mis datos" class="btn btn-primary">
 
     </form>
   </div>

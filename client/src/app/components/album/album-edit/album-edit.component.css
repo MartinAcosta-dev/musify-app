@@ -1,0 +1,16 @@
+#container{
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+#container input{
+    width: 50%;
+}
+
+#container textarea{
+    width: 50%;
+}
+
+#submit-edit-artist{
+    width: 15% !important;
+}

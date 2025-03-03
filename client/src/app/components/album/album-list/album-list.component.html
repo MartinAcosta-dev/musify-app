@@ -1,0 +1,41 @@
+<div id="componentContainer">
+  <div id="head-album-list-container" class="head-page mt-5" *ngIf="identity">
+    <ul class="pagination album-list">
+      <div *ngIf="identity.role == 'ROLE_ADMIN'" class="btn btn-secondary" [routerLink]="['/add-album']">
+        Añadir álbum
+      </div>
+      <div *ngIf="identity.role == 'ROLE_USER'" class="">
+        
+      </div>
+      
+    </ul>
+  </div>
+  
+  <div *ngIf="identity" class="" id="albumsContainer">
+  
+    <div *ngFor="let album of albums" class="album-item">
+        <div class="album-image">
+            <img [routerLink]="['/album', album._id]" src="{{ url + 'get-image-album/' + album.image }}" alt="">
+            <div class="album-title-overlay">
+              <a [routerLink]="['/album', album._id]">
+                {{album.title}} ({{album.year}})
+              </a>
+            </div>
+          </div>
+        
+  
+        <div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+          <a [routerLink]="['/edit-album', album._id]" class="btn btn-sm btn-warning" title="Pasar a edicion de los datos del álbum '{{album.title}}'">Editar</a>
+          <a (click)="onDeleteConfirm(album._id)" class="btn btn-sm btn-danger" title="Eliminar al álbum '{{album.title}}' junto a sus canciones">Borrar</a>
+        </div>
+  
+        <div class="seguro" *ngIf="confirmado == album._id">
+          <a (click)="onDeleteAlbum(album._id)"class="btn btn-sm btn-warning" title="Eliminar al álbum '{{album.title}}' junto a sus canciones">Eliminar</a>
+          <a (click)="onCancelAlbum()" class="btn btn-sm btn-danger">Cancelar</a>
+        </div>
+    </div>
+  
+    
+  </div>
+
+</div>

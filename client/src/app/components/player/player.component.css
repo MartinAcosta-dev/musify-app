@@ -1,0 +1,42 @@
+#player-container{
+    border-radius: 20px;
+    height: 100px;
+    width: 100%;
+    /* background-color: rgb(21, 29, 44); */
+    margin-top: 5vh;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+#play-image-album{
+    border-radius: 15px;
+    width: 120px;
+}
+
+#audio-file{
+    display: flex;
+}
+
+#audio-player-container{
+    width: 90%;
+}
+
+audio{
+    width: 100%;
+}
+
+#playing-song-data{
+    margin-left: 20px;
+    padding: 5px;
+}
+
+#playing-song-artist{
+    text-decoration: none;
+}
+
+#playing-song-artist:hover{
+    text-decoration: underline;
+}

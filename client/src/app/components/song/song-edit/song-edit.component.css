@@ -1,0 +1,12 @@
+#container{
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+#container input{
+    width: 300px;
+}
+
+#container textarea{
+    width: 300px;
+}

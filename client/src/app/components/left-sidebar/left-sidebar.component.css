@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title{
+    font-size: 24px;
+}
+
+#svg-inicio{
+    width: 20px;
+}

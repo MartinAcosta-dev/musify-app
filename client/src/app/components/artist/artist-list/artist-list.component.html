@@ -1,0 +1,48 @@
+<div id="componentContainer">
+  <div id="head-artist-list-container" class="head-page mt-5" *ngIf="identity">
+    <ul class="pagination artist-list">
+      <div *ngIf="identity.role == 'ROLE_ADMIN'" class="btn btn-secondary" [routerLink]="['/add-artist']">
+        Añadir artista
+      </div>
+      <div *ngIf="identity.role == 'ROLE_USER'" class="" [routerLink]="['/add-artist']">
+        
+      </div>
+      <div class="pagination-buttons-div">
+        <a [routerLink]="['/artists', prev_page]" class="">
+          <img src="../../../assets/images/left-arrow-pagination.png" alt="Prev" class="pagination-icon" >
+        </a>
+        <a [routerLink]="['/artists', next_page]" class="">
+          <img src="../../../assets/images/right-arrow-pagination.png" alt="Next" class="pagination-icon" >
+        </a>
+      </div>
+    </ul>
+</div>
+
+<div *ngIf="identity" class="" id="artistsContainer">
+
+    <div *ngFor="let artist of artists" class="artist-item">
+        <div class="artist-image">
+            <img [routerLink]="['/artist', artist._id]" src="{{ url + 'get-image-artist/' + artist.image }}" alt="">
+            <div class="artist-name-overlay">
+              <a [routerLink]="['/artist', artist._id]">
+                {{artist.name}}
+              </a>
+            </div>
+          </div>
+        
+
+        <div class="buttons" *ngIf="identity.role == 'ROLE_ADMIN'">
+          <a [routerLink]="['/edit-artist', artist._id]" class="btn btn-sm btn-warning" title="Pasar a edicion de los datos del artista '{{artist.name}}'">Editar</a>
+          <a (click)="onDeleteConfirm(artist._id)" class="btn btn-sm btn-danger" title="Eliminar al artista '{{artist.name}}' junto a sus obras">Borrar</a>
+        </div>
+
+        <div class="seguro" *ngIf="confirmado == artist._id">
+          <a (click)="onDeleteArtist(artist._id)"class="btn btn-sm btn-warning" title="Eliminar al artista '{{artist.name}}' junto a sus obras">Eliminar</a>
+          <a (click)="onCancelArtist()" class="btn btn-sm btn-danger">Cancelar</a>
+        </div>
+    </div>
+
+    
+</div>
+
+</div>

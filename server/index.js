@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 async function init(){
   console.log("Conectando a base de datos Musify...")
-  let connection =  await mongoose.connect('mongodb://localhost:27017/Musify');
+  let connection =  await mongoose.connect('mongodb://127.0.0.1:27017/Musify');
 
   if(connection){
     console.log('Conexión a la base Musify correctamente. Puerto 27017');

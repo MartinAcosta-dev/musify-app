@@ -1,0 +1,36 @@
+<div class="login-container">
+    <div class="login-form">
+      <h2>Iniciar sesión</h2>
+      <hr>
+      <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit()">
+        <div class="form-group">
+            <label>Correo electrónico: </label>
+            <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required placeholder="Ingrese su correo electrónico">
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password"  class="form-control" required placeholder="Ingrese la contraseña">
+          <div *ngIf="errorMessage">
+            <div class="alert alert-warning col-lg-8" role="alert">
+              <b>Error</b> al logearte: {{errorMessage}}
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="login-btn">Iniciar sesión</button>
+        <div class="alert alert-danger col-lg-12 mt-4" *ngIf="alertMessage">
+          {{alertMessage}}
+      </div>
+      </form>
+      <p class="register-text">¿No tienes cuenta? <a href="/register" class="register-link">Regístrate aquí</a></p>
+      <div class="logo-container">
+        <div>
+          <hr>
+        </div>
+        <img src="../../../assets/favicon.ico" alt="Logo" class="logo">
+        <div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  

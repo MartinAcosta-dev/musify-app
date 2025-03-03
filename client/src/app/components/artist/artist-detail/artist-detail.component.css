@@ -1,0 +1,145 @@
+#container{
+    max-height: 70vh;
+    overflow-y: scroll;    
+}
+
+.artist-box{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+img{
+    height: 170px;
+}
+#albums-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style: none;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.album-item .album-image{
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 30px;
+}
+
+.album-item .album-image img{
+    height: 100%;
+    border-radius: 5px;
+}
+
+.album-item .album-name{
+    color: white;
+    text-shadow: 1px 1px 2px rgb(27, 27, 27);
+    padding: 8px;
+    padding-left: 15px;
+    border-radius: 10px;
+}
+
+.album-item .album-name a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.album-item .album-name a:hover{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.album-item .buttons{
+    padding: 10px;
+    padding-left: 7px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+}
+
+.album-item .buttons a{
+    margin-right: 5px;
+    border: 1px solid black;
+
+}
+
+.seguro{
+    position: absolute;
+    margin-top: -44px;
+    background-color: rgb(223, 222, 222);
+    height: 40px;
+    width: 200px;
+    padding: 5px;
+    margin-left: 3px
+}
+
+.seguro a{
+    border: 1px solid black;
+    margin-right: 6px;
+}
+
+.album-image img{
+    cursor: pointer;
+}
+
+.pagination-buttons-div *{
+    display: inline;
+    margin-right: 5px;
+}
+
+.pagination-icon {
+    width: 20px; /* Ajusta el tamaño de las flechas */
+    height: auto;
+    cursor: pointer;
+}
+
+.album-item {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    width: 220px; /* Ajusta el tamaño según tus necesidades */
+  }
+  
+  .album-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; /* Opcional: bordes redondeados */
+  }
+  
+  
+  .album-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo negro semitransparente */
+    color: white !important;
+    padding: 5px;
+    padding-left: 10px;
+    text-align: left;
+    font-size: 12px; /* Tamaño de fuente ajustable */
+}
+  
+.album-title-overlay a{
+    color: white;
+    text-decoration: none;
+}
+
+.album-title-overlay a:hover{
+    text-decoration: underline;
+}
+
+.artist-name{
+    font-size: 10px;
+}

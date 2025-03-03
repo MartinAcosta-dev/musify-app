@@ -1,0 +1,24 @@
+<div id="player-container">
+    <div class="album-image">
+            <img *ngIf="!albumImage" id="play-image-album" src="../../../assets/images/album-placeholder.jpg" alt="">
+            <img *ngIf="albumImage" id="play-image-album" src="{{albumImage}}" alt="">
+
+    </div>
+
+    <div id="audio-player-container">
+        <div id="playing-song-data">
+            <span id="playing-song-title">
+                {{song.name}}
+            </span>
+            <a [routerLink]="['/artist', artistID]" id="playing-song-artist">
+               - {{artistName}}
+            </a>
+           
+        </div>
+        <audio controls id="player">
+            <source id="mp3-source" src="{{url + 'get-song-file/' + song.file}}" type="audio/mpeg">
+            Tu navegador no es compatible con HTML5
+        </audio>
+    </div>
+
+</div>

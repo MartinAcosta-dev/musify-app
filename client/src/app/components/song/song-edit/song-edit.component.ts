@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 
 // Modelos
+import { Artist } from 'src/app/models/artist.model';
 import { Album } from 'src/app/models/album.model';
 import { User } from 'src/app/models/user.model';
 import { Song } from 'src/app/models/song.model';
@@ -29,6 +30,8 @@ export class SongEditComponent {
   public url: string; 
   public alertMessage: any;
   public filesToUpload: Array<File>;
+  public artist: Artist;
+  public album: Album;
   public song : Song;
   public songId: string;
   public apiUrl = GLOBAL.url;
@@ -46,7 +49,9 @@ export class SongEditComponent {
     this.songId = this.router.url;
     this.songId = this.songId.split("/")[2];
     this.filesToUpload = [];
-    this.song = new Song("","","",0,"","");
+    this.artist = new Artist("","","","");
+    this.album = new Album("","","",0,"", this.artist)
+    this.song = new Song("","",0,0,"", this.album);
 
   }
 

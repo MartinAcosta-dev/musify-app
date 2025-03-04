@@ -33,9 +33,9 @@ export class PlayerComponent implements OnInit {
     this.url = GLOBAL.url
     this.token = _userService.getToken();
     this.identity = _userService.getIdentity();
-    this.song = new Song("","", "", 0,"","")
     this.artist = new Artist("", "", "", "");
     this.album = new Album("", "", "", 0,"", this.artist);
+    this.song = new Song("","", 0, 0,"", this.album)
     this.albumImage = "";
     this.artistName = "";
     this.artistID = "";
@@ -48,7 +48,7 @@ export class PlayerComponent implements OnInit {
     if (storedSong !== null){
       this.song = JSON.parse(storedSong); 
 
-      let artistID = this.song.album.artist;
+      let artistID = this.song.album.artist._id;
 
       this._artistService.getArtist(this.token, artistID).subscribe(
         (res) => {
@@ -67,7 +67,7 @@ export class PlayerComponent implements OnInit {
       }
 
     }else{
-      this.song = new Song("","", "", 0,"","")
+      this.song = new Song("","", 0, 0,"", this.album)
     }
   }
 }

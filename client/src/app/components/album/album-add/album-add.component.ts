@@ -16,7 +16,7 @@ import { AlbumService } from 'src/app/services/album.service';
   styleUrls: ['./album-add.component.css'],
   providers: [UserService]
 })
-export class AlbumAddComponent implements OnInit {
+export class AlbumAddComponent {
   public titulo: string;
   public artist: Artist;
   public album: Album;
@@ -36,10 +36,6 @@ export class AlbumAddComponent implements OnInit {
     this.token = _userService.getToken();
     this.url = GLOBAL.url;
     this.alertMessage = {type: "", message: ""};
-  }
-
-  ngOnInit(){
-    console.log("Album cargado");
   }
 
   public onSubmit(){

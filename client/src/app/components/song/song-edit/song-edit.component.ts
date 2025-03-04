@@ -59,7 +59,6 @@ export class SongEditComponent {
     this._songService.getSong(this.token, this.songId).subscribe(
       response =>{
         this.song = response.song
-        console.log(this.song);
       }
     )
   }
@@ -68,7 +67,6 @@ export class SongEditComponent {
   public onSubmit(){
     this._songService.editSong(this.token,this.songId, this.song).subscribe( 
       (response) => {       
-        console.log(response);
         if(response.album){
           // Doy mensaje OK
           this.alertMessage.type = "success";

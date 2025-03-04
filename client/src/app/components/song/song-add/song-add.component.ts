@@ -41,7 +41,7 @@ export class SongAddComponent {
 
     this.artist = new Artist("", "", "", "");
     this.album = new Album("","","",0,"",this.artist);
-    this.song = new Song("","","",0,"","");
+    this.song = new Song("","",0,0,"",this.album);
 
 
     
@@ -85,7 +85,7 @@ export class SongAddComponent {
   public onSubmitAddSong(): void{
     // Agregamos a la cancion el id del album actual para luego utilizar el servicio
     let albumId = this.router.url.split("/")[2];
-    this.song.album = albumId;
+    this.song.album._id = albumId;
 
     this._songService.addSong(this.song, this.token).subscribe(
       response => {

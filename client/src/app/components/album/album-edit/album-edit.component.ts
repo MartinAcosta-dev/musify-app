@@ -71,11 +71,6 @@ export class AlbumEditComponent {
             this._uploadService.makeFileRequest(this.url + "/upload-image-album/" + this.albumId,[],this.filesToUpload, this.token, "image")
             .then(
               (result)=>{
-                console.log("album antes de editar: ");
-                console.log(this.album)
-                console.log("Album despues de editar");
-
-                console.log(result)
                 this.album = result.album;
               },
               (error)=>{
@@ -97,8 +92,6 @@ export class AlbumEditComponent {
 
   public fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log("filesToUpload");
-    console.log(this.filesToUpload);
   }
 }
 

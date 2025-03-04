@@ -55,7 +55,6 @@ export class SongAddComponent {
       this._albumService.getAlbum(albumId, this.token).subscribe(
         response => {
           this.album = response.album
-          console.log(this.album)
         }
       )
   }

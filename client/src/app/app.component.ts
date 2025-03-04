@@ -37,11 +37,6 @@ export class AppComponent {
     // Conseguir datos de usuario identificado
     this._userService.signUp(this.user).subscribe( 
         (response) => {       
-          if(!response.user){
-            console.log("no funciona")
-          }else{
-            console.log("funciona")
-          }
           this.identity = response.user;
           if(!this.identity){
             alert("El usuario no esta correctamente identificado");

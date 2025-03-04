@@ -23,8 +23,6 @@ export class UserEditComponent implements OnInit{
   constructor(
     private _userService: UserService
   ){
-    console.log("Ejecutandose el constructor de user-edit component.ts");
-
     // LocalStorage
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -68,8 +66,6 @@ export class UserEditComponent implements OnInit{
               });
           } else {
             // No hay archivos para subir, solo actualizar el usuario
-            console.log("usuario luego de la peticion de imagen");
-            console.log(this.user);
             this.alertMessage = "El usuario se ha actualizado correctamente.";
           }
         }
@@ -80,7 +76,6 @@ export class UserEditComponent implements OnInit{
         if (errorMessage != null) {
           var body = JSON.parse(updateUserError._body);
           this.alertMessage = "Error al actualizar el usuario: " + body.message;
-          console.log(updateUserError);
         }
       }
     );

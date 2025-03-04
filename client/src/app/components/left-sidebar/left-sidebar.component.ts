@@ -17,7 +17,6 @@ export class LeftSidebarComponent {
   // Método para alternar entre expandir y contraer el sidebar
   toggleSidebar(): void {
     this.isCollapsed = !this.isCollapsed;
-    console.log("hola")
   }
 
   // Método para cerrar sesión

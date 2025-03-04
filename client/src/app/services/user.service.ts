@@ -24,9 +24,6 @@ export class UserService {
     return this._http.post(this.url + 'register', params, { headers: headers })
       .pipe(
         map((res: any) => {
-          if (res) {
-            console.log(res)
-          }
           return res; // Retornamos la respuesta para usarla en el componente
         })
       );

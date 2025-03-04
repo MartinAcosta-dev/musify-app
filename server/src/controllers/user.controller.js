@@ -10,6 +10,21 @@ async function saveUser(req, res){
         var params = req.body;
         var saltRounds = 10;
 
+        console.log(params)
+
+        console.log(params.name)
+
+        // Verifico si el usuario ya existe
+        const existingUser = await User.findOne({name: params.name})
+        console.log("---")
+        console.log(existingUser)
+        if (existingUser){
+            return res.status(400).send({
+                error: "Nombre de usuario ya existe."
+            })
+        }
+
+
         if(params.password){
             var hashedPassword = await bcrypt.hash(params.password, saltRounds);
         }

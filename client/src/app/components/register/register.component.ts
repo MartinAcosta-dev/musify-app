@@ -19,7 +19,8 @@ export class RegisterComponent {
   
   public identity: any = {};
   public token: string = "";
-  public errorMessage: any = '';
+  public alertMessage: string = "";
+  public errorMessage: string = "";
 
   public alertRegister: string = "";
 
@@ -34,12 +35,10 @@ export class RegisterComponent {
   public onRegisterSubmit(){
     this._userService.registerUser(this.user).subscribe(
       (res) => {
-        if (res) {
-          console.log("Se ha registrado.")
-          console.log(res)
+        if (res.error) {
+          this.errorMessage = res.error.message;
         }else{
-          console.log("No se ha registrado.")
-          console.log(res)
+          this.alertMessage = "El usuario se ha registradoooo"
         }
       }
     )

@@ -23,6 +23,18 @@
       </form>
       <p class="register-text">¿Ya tienes cuenta? <a href="/login" class="register-link">Identificate aquí</a></p>
 
+      <div *ngIf="alertMessage" >
+        <div class="alert alert-success col-lg-8" role="alert">
+          {{alertMessage}}
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" >
+        <div class="alert alert-danger col-lg-8" role="alert">
+          <b>Error</b> al registrar: {{errorMessage}}
+        </div>
+      </div>
+      
       <br>
       <div class="logo-container">
         <div>

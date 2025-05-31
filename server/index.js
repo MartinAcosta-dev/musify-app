@@ -1,5 +1,5 @@
 var app = require('./src/app');
-var port = process.env.PORT || 1042;
+var port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 
 async function init(){

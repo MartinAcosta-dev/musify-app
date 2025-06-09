@@ -10,20 +10,17 @@ async function saveUser(req, res){
         var params = req.body;
         var saltRounds = 10;
 
-        console.log(params)
-
-        console.log(params.name)
-
         // Verifico si el usuario ya existe
         const existingUser = await User.findOne({name: params.name})
-        console.log("---")
-        console.log(existingUser)
         if (existingUser){
             return res.status(400).send({
                 error: "Nombre de usuario ya existe."
             })
         }
 
+        // Si no existe ningun otro usuario en la base, lo creamos con rol de administrador
+        const userCount = await User.countDocuments();
+        const role = userCount === 0 ? 'ROLE_ADMIN' : 'ROLE_USER';
 
         if(params.password){
             var hashedPassword = await bcrypt.hash(params.password, saltRounds);
@@ -34,7 +31,7 @@ async function saveUser(req, res){
             surname: req.body.surname,
             email: req.body.email,
             password: hashedPassword,
-            role: req.body.role,
+            role: role,
             image: req.body.image
         });
 

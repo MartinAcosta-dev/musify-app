@@ -94,7 +94,6 @@ async function uploadFile(req, res){
 
         if(file_ext == 'mp3' || file_ext == 'wav' || file_ext == 'ogg'){
             const songUpdated = await Song.findByIdAndUpdate(songId, {file: file_name}, {new: true});
-            console.log(songUpdated);
             if(songUpdated){
                 res.status(200).send({song: songUpdated});
             }else{
